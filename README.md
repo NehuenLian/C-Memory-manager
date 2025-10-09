@@ -20,7 +20,6 @@ This program allows users to read and write different data types (integers and c
 
 ## Project Structure
 
-
 ```
 memory_gestor/
 ├── data_manipulation/
