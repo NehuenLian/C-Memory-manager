@@ -1,4 +1,4 @@
-# Memory Manager 🧁
+# Memory Manager
 
 A simple C program for managing data in memory at the byte level with persistence capabilities. 
 - Project for **educational purpose**.
