@@ -11,7 +11,7 @@ int startup_memory() {
     FILE *memory_file = fopen("memory.bin", "wb");
     if (!memory_file) {
         perror("Cannot open the file");
-        return 1;
+        return -1;
     }
 
     enum size {SIZE=16}; // 16 bytes
@@ -26,13 +26,13 @@ int startup_memory() {
     mem.stored_ints = malloc(SIZE * 4);
     if (!mem.stored_ints) {
         printf("Couldn't assign memory for ints.\n");
-        return 1;
+        return -1;
     }
 
     mem.stored_chars = malloc(SIZE);
     if (!mem.stored_chars) {
         printf("Couldn't assign memory for chars.\n");
-        return 1;
+        return -1;
     }
 
     memset(mem.stored_ints, 0, SIZE * 4); 
@@ -60,7 +60,7 @@ int read_binary() {
 
     if (!memory_file) {
         perror("Cannot open the file");
-        return 1;
+        return -1;
     }
 
     unsigned char byte = 0;
@@ -70,8 +70,8 @@ int read_binary() {
         bytes_count++;
     }
     printf("Total bytes count: %d\n", bytes_count);
-
     fclose(memory_file);
+
     return 0;
 }
 // ---------------------------------------
@@ -96,20 +96,20 @@ int main() {
 
     if (task == 'r' && type == 'i') {
         read_int(int_bytes);
-    }
-    else if (task == 'r' && type == 'c') {
+
+    } else if (task == 'r' && type == 'c') {
         read_char(char_bytes);
-    }
-    else if (task == 'w' && type == 'i') {
+
+    } else if (task == 'w' && type == 'i') {
         modify_int(int_bytes);
         update_memory(runtime_full_memory, int_bytes, char_bytes);
-    }
-    else if (task == 'w' && type == 'c') {
+        
+    } else if (task == 'w' && type == 'c') {
         modify_char(char_bytes);
         update_memory(runtime_full_memory, int_bytes, char_bytes);
     }
-
     free(int_bytes);
     free(char_bytes);
+
     return 0;
 }
