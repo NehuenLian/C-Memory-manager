@@ -19,14 +19,16 @@ unsigned char* load_into_memory() {
         i++;
     }
     fclose(memory_file);
+
     return runtime_full_memory;
 }
 
 
 int* divide_int_memory(unsigned char *runtime_full_memory) {
-
     int *int_data = malloc(64);
-    if (!int_data) return NULL;
+    if (!int_data) {
+        return NULL;
+    }
     memcpy(int_data, &runtime_full_memory[0], sizeof(int) * 16);
     
     return int_data;
@@ -34,7 +36,9 @@ int* divide_int_memory(unsigned char *runtime_full_memory) {
 
 unsigned char* divide_char_memory(unsigned char *runtime_full_memory) {
     unsigned char *char_data = malloc(16);
-    if (!char_data) return NULL;
+    if (!char_data) {
+        return NULL;
+    }
     memcpy(char_data, &runtime_full_memory[64], 16);
 
     return char_data;
