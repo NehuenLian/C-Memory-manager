@@ -25,21 +25,27 @@ unsigned char* load_into_memory() {
 
 
 int* divide_int_memory(unsigned char *runtime_full_memory) {
-    int *int_data = malloc(64);
+    size_t elements = 16;
+    size_t bytes = elements * sizeof(int);
+
+    int *int_data = malloc(bytes);
     if (!int_data) {
         return NULL;
     }
-    memcpy(int_data, &runtime_full_memory[0], sizeof(int) * 16);
+    memcpy(int_data, &runtime_full_memory[0], bytes);
     
     return int_data;
 }
 
 unsigned char* divide_char_memory(unsigned char *runtime_full_memory) {
-    unsigned char *char_data = malloc(16);
+    size_t elements = 16;
+    size_t bytes = elements * sizeof(char);
+
+    unsigned char *char_data = malloc(bytes);
     if (!char_data) {
         return NULL;
     }
-    memcpy(char_data, &runtime_full_memory[64], 16);
+    memcpy(char_data, &runtime_full_memory[64], bytes);
 
     return char_data;
 }
