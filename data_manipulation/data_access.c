@@ -9,8 +9,9 @@ void read_int(int *int_bytes) {
 
     if (index <= 15) {
         printf("Your data: %d.\n", int_bytes[index]);
+    } else {
+        printf("Out of index.\n");
     }
-    else printf("Out of index.\n");
 }
 
 void read_char(unsigned char *char_bytes) {
@@ -20,8 +21,9 @@ void read_char(unsigned char *char_bytes) {
 
     if (index <= 15) {
         printf("Your data: %d.\n", char_bytes[index]);
+    } else {
+        printf("Out of index.\n");
     }
-    else printf("Out of index.\n");
 }
 // ---------------------------------------
 
@@ -38,8 +40,9 @@ void modify_int(int *int_bytes) {
         printf("Select new value:\n");
         scanf("%d", &new_value);
         int_bytes[index] = new_value;
+    } else {
+        printf("Out of index.\n");
     }
-    else printf("Out of index.\n");
 }
 
 void modify_char(unsigned char *char_bytes) {
@@ -53,6 +56,7 @@ void modify_char(unsigned char *char_bytes) {
         printf("Select new value:\n");
         scanf("%d", &new_value);
         char_bytes[index] = new_value;
+    } else {
+        printf("Out of index.\n");
     }
-    else printf("Out of index.\n");
 }
