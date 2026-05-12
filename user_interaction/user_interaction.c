@@ -10,12 +10,12 @@ char define_task() {
 
         if (choosed_task == 'w' || choosed_task == 'r') {
             flag = 0;
-        }
-        else {
+        } else {
             printf("The task choosed doesn't exist.\n");
             flag = 1; // flag set to 1 again so the sentinel loop stills running
         }
     }
+
     return choosed_task;
 }
 
@@ -29,11 +29,11 @@ char define_datatype() {
 
         if (choosed_type == 'i' || choosed_type == 'c') {
             flag = 0;
-        }
-        else {
+        } else {
             printf("The task choosed doesn't exist.\n");
             flag = 1; // flag set to 1 again so the sentinel loop stills running
         }
     }
+
     return choosed_type;
 }
