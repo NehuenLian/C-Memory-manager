@@ -14,9 +14,9 @@ unsigned char* load_into_memory() {
     static unsigned char runtime_full_memory[80];
 
     unsigned char current_byte = 0;
-    int i = 0;
+    size_t i = 0;
 
-    while (fread(&current_byte, 1, 1, memory_file) == 1) {
+    while (fread(&current_byte, sizeof(char), 1, memory_file) == 1) {
         runtime_full_memory[i] = current_byte;
         i++;
     }
