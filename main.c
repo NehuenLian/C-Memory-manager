@@ -5,6 +5,8 @@
 #include "runtime_memory/manage_runtime_memory.h"
 #include "data_manipulation/data_access.h"
 
+#define ELEMENTS_QUANTITY 16
+
 // Memory startup if not exists
 int startup_memory() {
 
@@ -39,8 +41,8 @@ int startup_memory() {
     memset(mem.stored_chars, 'A', 16);
 
     // store bytes in the .bin file
-    fwrite(mem.stored_ints, sizeof(int), 16, memory_file);
-    fwrite(mem.stored_chars, sizeof(char), 16, memory_file);
+    fwrite(mem.stored_ints, sizeof(int), ELEMENTS_QUANTITY, memory_file);
+    fwrite(mem.stored_chars, sizeof(char), ELEMENTS_QUANTITY, memory_file);
 
     fclose(memory_file);
 
