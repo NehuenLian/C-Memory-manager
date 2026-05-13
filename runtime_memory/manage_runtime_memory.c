@@ -58,11 +58,14 @@ int update_memory(unsigned char *runtime_full_memory, int *int_bytes, unsigned c
         return 1;
     }
 
-    memcpy(runtime_full_memory, &int_bytes[0], sizeof(int) * 16);
-    memcpy(runtime_full_memory + 64, &char_bytes[64], 16); // start to copy from index 64, otherwhise it will overwrite from 0 to 15
+    size_t bytes_for_int = sizeof(int) * 16;
+    size_t bytes_for_char = 16;
+    size_t full_memory_size = sizeof(runtime_full_memory); // 80 bytes
 
-    // runtime_full_memory size = 80 bytes.
-    fwrite(runtime_full_memory, sizeof(char), 80, memory_file);
+    memcpy(runtime_full_memory, &int_bytes[0], bytes_for_int);
+    memcpy(runtime_full_memory + 64, &char_bytes[64], bytes_for_char); // start to copy from index 64, otherwhise it will overwrite from 0 to 15
+
+    fwrite(runtime_full_memory, sizeof(char), full_memory_size, memory_file);
     fclose(memory_file);
 
     return 0;
