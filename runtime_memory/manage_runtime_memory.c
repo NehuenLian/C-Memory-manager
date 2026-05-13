@@ -47,7 +47,7 @@ unsigned char* divide_char_memory(unsigned char *runtime_full_memory) {
     if (!char_data) {
         return NULL;
     }
-    memcpy(char_data, &runtime_full_memory[64], bytes);
+    memcpy(char_data, &runtime_full_memory[OFFSET], bytes);
 
     return char_data;
 }
