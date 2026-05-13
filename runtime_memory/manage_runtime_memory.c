@@ -2,6 +2,8 @@
 #include <string.h>
 #include <stdlib.h>
 
+#define OFFSET 64
+
 unsigned char* load_into_memory() {
     FILE *memory_file = fopen("memory.bin", "rb");
 
@@ -63,7 +65,7 @@ int update_memory(unsigned char *runtime_full_memory, int *int_bytes, unsigned c
     size_t full_memory_size = sizeof(runtime_full_memory); // 80 bytes
 
     memcpy(runtime_full_memory, &int_bytes[0], bytes_for_int);
-    memcpy(runtime_full_memory + 64, &char_bytes[64], bytes_for_char); // start to copy from index 64, otherwhise it will overwrite from 0 to 15
+    memcpy(runtime_full_memory + OFFSET, &char_bytes[OFFSET], bytes_for_char);
 
     fwrite(runtime_full_memory, sizeof(char), full_memory_size, memory_file);
     fclose(memory_file);
