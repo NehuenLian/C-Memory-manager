@@ -6,6 +6,8 @@
 #include "data_manipulation/data_access.h"
 
 #define ELEMENTS_QUANTITY 16
+#define SIZE_FOR_CHARS 16
+#define SIZE_FOR_INTS 64
 
 // Memory startup if not exists
 int startup_memory() {
@@ -16,7 +18,6 @@ int startup_memory() {
         return -1;
     }
 
-    enum size {SIZE=16}; // 16 bytes
     // struct that will represent all memory structure
     typedef struct Memory {
         int *stored_ints;
@@ -25,19 +26,19 @@ int startup_memory() {
 
     // define 2 memory type structures
     Mem mem;
-    mem.stored_ints = malloc(SIZE * 4);
+    mem.stored_ints = malloc(SIZE_FOR_INTS);
     if (!mem.stored_ints) {
         printf("Couldn't assign memory for ints.\n");
         return -1;
     }
 
-    mem.stored_chars = malloc(SIZE);
+    mem.stored_chars = malloc(SIZE_FOR_CHARS);
     if (!mem.stored_chars) {
         printf("Couldn't assign memory for chars.\n");
         return -1;
     }
 
-    memset(mem.stored_ints, 0, SIZE * 4); 
+    memset(mem.stored_ints, 0, SIZE_FOR_INTS); 
     memset(mem.stored_chars, 'A', 16);
 
     // store bytes in the .bin file
